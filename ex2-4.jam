@@ -1,0 +1,36 @@
+GOALS:
+ ACHIEVE variable_test_done;
+Plan: {
+GOAL:
+ ACHIEVE variable_test_done;
+BODY:
+ ASSIGN $goalArgument 5;
+ ASSIGN $localVariable 5;
+ EXECUTE println "\n\nTop-level goal: Value of $goalArgument: "
+ $goalArgument;
+ EXECUTE println "Top-level goal: Value of $localVariable: "
+ $localVariable;
+ PERFORM subgoal $goalArgument;
+ EXECUTE println "\n\nTop-level goal: Value of $goalArgument is
+ now: " $goalArgument;
+ EXECUTE println "Top-level goal: Value of $localVariable: "
+ $localVariable;
+}
+Plan: {
+NAME:
+ "Subgoal for variable binding test"
+DOCUMENTATION: "This is the 'subgoal' "
+GOAL:
+ PERFORM subgoal $argument;
+BODY:
+ EXECUTE println "\n\nsubgoal: Value of $argument is: "
+ $argument;
+ EXECUTE println "subgoal: Value of $localVariable: "
+ $localVariable;
+ ASSIGN $argument 0;
+ ASSIGN $localVariable 33.919;
+ EXECUTE println "subgoal: Value of $argument is now: "
+ $argument;
+ EXECUTE println "subgoal: Value of $localVariable: "
+ $localVariable;
+} 

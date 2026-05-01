@@ -1,0 +1,23 @@
+GOALS:
+ACHIEVE goal_1;
+FACTS:
+	FACT str1 "one";
+PLAN: {
+NAME:
+"ASSERT and Retrieve"
+GOAL:
+	ACHIEVE goal_1;
+BODY:
+	RETRIEVE str1 $s1;
+	EXECUTE println " $s1 is " $s1;
+	ASSERT str2 "two";
+	RETRIEVE str2 $s2;
+	EXECUTE println " $s2 is " $s2;
+	RETRACT str1 $s1;
+	EXECUTE println " $s1 is " $s1;
+
+	RETRIEVE str1 $s1;
+
+Failure:
+	EXECUTE println " program failed ";
+}

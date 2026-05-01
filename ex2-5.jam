@@ -1,0 +1,25 @@
+GOALS:
+ ACHIEVE solve_product;
+Plan: {
+NAME: "Solve product"
+GOAL: ACHIEVE solve_product;
+BODY:
+ ASSIGN $n1 3;
+ ASSIGN $n2 5;
+
+ PERFORM get_product $n1 $n2 ;
+
+FAILURE:
+ EXECUTE print "Plan failed for some reason.\n";
+}
+Plan: {
+NAME: "Get product"
+GOAL: PERFORM get_product $first $second;
+BODY:
+ EXECUTE println ;
+ ASSIGN $prod (* $first $second);
+ EXECUTE println " product of " $first " and " $second " is " $prod;
+
+FAILURE:
+ EXECUTE print "Plan failed for some reason.\n";
+} 
