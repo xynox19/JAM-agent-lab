@@ -1,0 +1,43 @@
+
+GOALS: 
+	ACHIEVE test_retrieveall;
+FACTS:
+	FACT item 4;
+	FACT item 8;
+	FACT item 2;
+
+PLAN: {
+
+NAME:  "Test Retrieveall"
+
+GOAL:
+	ACHIEVE test_retrieveall;
+BODY:
+	RETRIEVEALL $itemall  item  $val;
+
+	
+	OR
+	{
+
+		ASSIGN $N 1;		
+		WHILE: TEST (<= $N 10)
+		{
+			NEXTFACT $itemall item $val;
+
+			EXECUTE println " item " $N " is " $val;
+
+			ASSIGN $N (+ $N 1);
+		};
+
+	}
+
+	{
+		EXECUTE println " current value of N: "  $N;
+	};
+	
+	EXECUTE println " After the OR statement ";
+	EXECUTE println " the final value of N is: " $N;
+
+FAILURE:
+	EXECUTE println " program failed ";
+}

@@ -1,0 +1,28 @@
+GOALS: 
+	ACHIEVE test_retrieveall;
+FACTS:
+	FACT item 4;
+	FACT item 8;
+	FACT item 2;
+
+PLAN: {
+
+GOAL:
+	ACHIEVE test_retrieveall;
+BODY:
+
+	RETRIEVEALL $itemall item $val;
+
+	ASSIGN $N 1;
+	WHILE: TEST (<= $N 10)
+	{
+		NEXTFACT $itemall item $val;
+
+		EXECUTE println " item " $N " is " $val;
+
+		ASSIGN $N (+ $N 1);
+	};
+
+FAILURE:
+	EXECUTE println " program failed ";
+}

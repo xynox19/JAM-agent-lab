@@ -1,0 +1,37 @@
+GOALS:
+    ACHIEVE manage_items;
+
+FACTS:
+    FACT item "M26CDE";
+    FACT item "7086CEM";
+    FACT item "6058CEM";
+    FACT item "310CT";
+
+PLAN: {
+
+GOAL:
+    ACHIEVE manage_items;
+BODY:
+
+    // (b) Initial size
+    ASSIGN $Count (size item);
+    EXECUTE println "Initial number of item beliefs: " $Count;
+
+    // (c) Add beliefs
+    ASSERT item "M44IS";
+    ASSERT item "250CT";
+
+    ASSIGN $Count (size item);
+    EXECUTE println "Number of item beliefs after ASSERT: " $Count;
+
+    // (d) Remove beliefs
+    RETRACT item "M26CDE";
+    RETRACT item "7086CEM";
+    RETRACT item "6058CEM";
+
+    ASSIGN $Count (size item);
+    EXECUTE println "Number of item beliefs after RETRACT: " $Count;
+
+FAILURE:
+    EXECUTE println "Program failed";
+}

@@ -1,0 +1,25 @@
+GOALS:
+	ACHIEVE check_numbers;
+	
+PLAN: {
+
+GOAL:
+	ACHIEVE check_numbers;
+BODY:
+
+	ASSIGN $N  1;
+	WHILE: TEST (<= $N 10)
+	{	
+		WHEN: TEST(== (% $N 2) 0)
+	{
+		EXECUTE println $N "is even";
+	};
+	WHEN: TEST(!= (% $N 2) 0)
+	{
+		EXECUTE println $N "is odd";
+	};
+	ASSIGN $N (+ $N 1);
+	};
+FAILURE:
+	EXECUTE println " program failed ";
+}
