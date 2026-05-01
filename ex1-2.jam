@@ -1,0 +1,17 @@
+GOALS:
+ACHIEVE concat_strings;
+FACTS:
+FACT str1 "Hello";
+FACT str2 " World!";
+PLAN: {
+NAME:
+"CONCATENATE TWO STRINGS"
+DOCUMENTATION:
+"Example of how to add two strings!"
+GOAL:
+ACHIEVE concat_strings;
+BODY:
+RETRIEVE str1 $s1;
+RETRIEVE str2 $s2;
+EXECUTE println "The final String is: " (+ $s1 $s2);
+} 

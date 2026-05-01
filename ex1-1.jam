@@ -1,0 +1,16 @@
+GOALS:
+ACHIEVE add_two_numbers;
+ACHIEVE addition2;
+PLAN:
+{
+GOAL:
+ACHIEVE add_two_numbers;
+BODY:
+EXECUTE println "add_two_numbers result: " (+ 5 999);
+}
+PLAN:{
+GOAL:
+ACHIEVE addition2;
+BODY:
+EXECUTE println "Result for 'addition2': " (+ 9 0);
+} 
