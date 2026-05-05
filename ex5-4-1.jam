@@ -1,0 +1,28 @@
+GOALS:
+    PERFORM solveprob2 5 1;
+
+PLAN: {
+
+NAME: "Recursive factorial"
+
+GOAL:
+    PERFORM solveprob2 $N $calc;
+
+BODY:
+
+    WHEN : TEST ( == $N 1 )
+    {
+        ASSIGN $calc 1;
+    };
+
+    WHEN : TEST ( > $N 1 )
+    {
+        PERFORM solveprob2 (- $N 1) $calc;
+        ASSIGN $calc (* $N $calc);
+    };
+
+    EXECUTE println $calc;
+
+FAILURE:
+    EXECUTE print "Plan failed for some reason..\n";
+}

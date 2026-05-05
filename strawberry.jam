@@ -1,0 +1,25 @@
+GOALS:
+ACHIEVE goal_1;
+FACTS:
+	FACT str1 "one";
+	FACT str2 "two";
+PLAN: {
+NAME:
+"CONCATENATE TWO STRINGS"
+DOCUMENTATION:
+"Example of how to add two strings!"
+GOAL:
+	ACHIEVE goal_1;
+BODY:
+	RETRIEVE str1 $s1;
+	RETRIEVE str2 $s2;
+	EXECUTE println "The String str1 is: " $s1;
+	EXECUTE println "The String str2 is: " $s2;
+	EXECUTE println "The first concatenated string is: " (+ $s1 $s2);
+	UPDATE (str1) (str1 $s2);
+	EXECUTE println "The string str1 is: " $s1;
+	EXECUTE println "The first concatenated string after update is: " (+ $s1 $s2);
+	RETRIEVE str1 $s1;
+	EXECUTE println "The String str1 is now: " $s1;
+	EXECUTE println "The second concatenated string after retrieve is now: " (+ $s1 $s2);
+} 

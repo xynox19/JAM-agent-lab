@@ -1,0 +1,29 @@
+GOALS:
+    PERFORM solveprob2 5 "calc";
+
+Plan: {
+
+NAME:   "Solve problem"
+
+GOAL:   PERFORM solveprob2 $N  $calc;
+
+BODY:
+    WHEN : TEST ( != $N 0 )
+        {   
+	     PERFORM solveprob2 (- $N 1) $calc;
+	
+	     ASSIGN $calc (+ $N  $calc);
+          
+        };
+
+     WHEN : TEST ( == $N 1 )
+     {
+           ASSIGN $calc 1;
+     };
+
+EXECUTE println $calc;
+
+FAILURE:
+        EXECUTE print "Plan failed for some reason.\n";
+}
+

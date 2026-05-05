@@ -1,0 +1,38 @@
+GOALS:
+    ACHIEVE replace_sentence;
+
+FACTS:
+    FACT sentence "I" "am" "the only" "one";
+
+PLAN: {
+
+GOAL:
+    ACHIEVE replace_sentence;
+
+BODY:
+
+    // Get the sentence from beliefs
+    RETRIEVE sentence $w1 $w2 $w3 $w4;
+
+    // Replace word 1
+    WHEN : TEST (== $w1 "I")
+    {
+        ASSIGN $w1 "We";
+    };
+
+    // Replace word 2
+    WHEN : TEST (== $w2 "am")
+    {
+        ASSIGN $w2 "are";
+    };
+
+    // Replace word 4
+    WHEN : TEST (== $w4 "one")
+    {
+        ASSIGN $w4 "ones";
+    };
+
+    // Print final sentence
+    EXECUTE println $w1 " " $w2 " " $w3 " " $w4;
+
+}

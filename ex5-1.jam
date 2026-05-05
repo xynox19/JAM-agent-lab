@@ -1,0 +1,27 @@
+GOALS:
+    ACHIEVE check_same_name;
+FACTS:
+FACT territory  "Algeria"  "Algiers";
+FACT territory  "Andorra"  "Andorra";
+FACT territory  "Italy"   "Rome";
+FACT territory  "Kuwait"  "Kuwait";
+FACT territory  "Malaysia"  "Kuala Lumpur";
+FACT territory  "Mexico"  "Mexico";
+FACT territory  "Singapore"  "Singapore";
+
+PLAN: {
+GOAL:
+    ACHIEVE check_same_name;
+
+BODY:
+    RETRIEVEALL $list territory $Country $Capital;
+    WHILE: NEXTFACT $list territory $Country $Capital {
+        WHEN: TEST (== $Country $Capital)
+        {
+            EXECUTE println $Country "the country and the capital have the same name";
+        };
+    };
+
+FAILURE:
+    EXECUTE println "Program failed";
+}

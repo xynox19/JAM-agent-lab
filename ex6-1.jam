@@ -1,0 +1,51 @@
+GOALS: 
+	ACHIEVE calculations;
+FACTS:
+	FACT item 1    5   6;
+	FACT item 2    10  12;
+	FACT item 3    13  16;
+
+PLAN: {
+
+NAME:  "Test calculations"
+
+GOAL:
+	ACHIEVE calculations;
+BODY:
+	RETRIEVEALL $allitems item  $op  $val1   $val2;
+
+	
+ASSIGN $N 1;
+ASSIGN $Max 3;
+
+WHILE: TEST (or (<= $N $Max) (== $Max 0))
+{
+    NEXTFACT $allitems item  $op  $val1  $val2;
+
+    WHEN: TEST (== $op  1)
+    {
+        ASSIGN $sum  (+ $val1  $val2);
+        EXECUTE println " Sum is: "  $sum ;
+    };
+
+    WHEN: TEST (== $op  2)
+    {
+        ASSIGN $sub  (-  $val1  $val2);
+        EXECUTE println " Subtraction is: "  $sub;
+    };
+
+    WHEN: TEST (== $op  10)
+    {
+        ASSIGN $prod  (*  $val1  $val2);
+        EXECUTE println " Product is: "  $prod ;
+    };
+
+    ASSIGN $N (+ $N 1);
+};
+		
+	EXECUTE println " After the OR statement ";
+	EXECUTE println " the final value of N is: " $N;
+
+FAILURE:
+	EXECUTE println " program failed ";
+}
